@@ -1,0 +1,12 @@
+oozie job --oozie http://host_name:8080/oozie --config /data/BDLoad/oozie-test/run_hive_script.properties -D oozie.wf.application.path hdfs:///user/bdload/oozie-test/run_hive_script.xml –run
+
+
+oozie job -run --config /data/BDLoad/oozie-test/run_hive_script.properties -D oozie.wf.application.path hdfs:///user/bdload/oozie-test/run_hive_script.xml
+
+oozie job --oozie http://sfdmhwtmn001.gid.gap.com:8080/oozie --config /data/BDLoad/oozie-test/run_hive_script.properties -D oozie.wf.application.path hdfs:///user/bdload/oozie-test/run_hive_script.xml –run
+
+
+oozie job -run --config /home/xgadurka/oozie-test/run_hive_script.properties -D oozie.wf.application.path hdfs:///user/xgadurka/test/run_hive_script.xml
+
+
+oozie job -run --config /home/mghosh/oozie-test/run_hive_script.properties -D oozie.wf.application.path hdfs:///user/mghosh/test/run_hive_script.xml

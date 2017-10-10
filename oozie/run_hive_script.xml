@@ -1,0 +1,38 @@
+<workflow-app xmlns="uri:oozie:workflow:0.4" name="adhoc-run-hive-workflow">
+
+  <global>
+    <job-tracker>${jobTracker}</job-tracker>
+    <name-node>${nameNode}</name-node>
+    <configuration>
+      <property>
+        <name>mapred.job.queue.name</name>
+        <value>${queueName}</value>
+      </property>
+    </configuration>
+  </global>
+
+  <start to="run-hive-scipt" />
+
+  <action name="run-hive-scipt">
+    <hive xmlns="uri:oozie:hive-action:0.2">
+      <job-tracker>${jobTracker}</job-tracker>
+      <name-node>${nameNode}</name-node>
+      <job-xml>${hiveConfXml}</job-xml>
+      <configuration>
+          <property>
+              <name>mapred.job.queue.name</name>
+              <value>${queueName}</value>
+          </property>
+      </configuration>
+      <script>${hiveScript}</script>
+      <param>a=1</param>
+    </hive>
+    <ok to="end" />
+    <error to="fail" />
+  </action>
+
+  <kill name="fail">
+    <message>ERROR: error message</message>
+  </kill>
+  <end name="end" />
+</workflow-app>
